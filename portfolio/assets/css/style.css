@@ -1,6 +1,4 @@
-/* ============================================
-   1. VARIABLES — all colors/fonts defined once
-   ============================================ */
+
 :root{
   --black:#000000;
   --white:#ffffff;
@@ -12,9 +10,7 @@
   --sidebar-width:64px;
 }
 
-/* ============================================
-   2. RESET — basic reset so browsers behave the same
-   ============================================ */
+
 *{ box-sizing:border-box; margin:0; padding:0; }
 
 body{
@@ -26,11 +22,7 @@ body{
 
 a{ color:inherit; text-decoration:none; }
 
-/* ============================================
-   3. SIDEBAR NAVIGATION (desktop)
-   A fixed black strip on the left with vertical text links.
-   "writing-mode: vertical-rl" is what turns the text sideways.
-   ============================================ */
+
 .sidebar{
   position:fixed;
   top:0; left:0; bottom:0;
@@ -64,7 +56,7 @@ a{ color:inherit; text-decoration:none; }
   background:rgba(255,255,255,0.08);
 }
 
-/* Hide the sidebar on small screens and use a top bar instead */
+
 .sidebar{ display:none; }
 .mobile-nav{
   position:sticky;
@@ -103,14 +95,12 @@ main{
 
 section{ padding:64px 0; }
 
-/* A simple dashed line used between sections, like a tear-off perforation */
 .divider{
   border:none;
   border-top:2px dashed var(--black);
   margin:0;
 }
 
-/* Header row used at the top of every section: title + small label */
 .section-head{
   display:flex;
   justify-content:space-between;
@@ -130,9 +120,7 @@ section{ padding:64px 0; }
   color:var(--gray-light);
 }
 
-/* ============================================
-   5. HERO SECTION
-   ============================================ */
+
 .hero{
   padding-top:100px;
   display:flex;
@@ -152,8 +140,6 @@ section{ padding:64px 0; }
   margin-bottom:14px;
 }
 
-/* The "redacted name" effect:
-   a black bar sits on top of the name, then shrinks away on page load. */
 .redact-box{
   position:relative;
   display:inline-block;
@@ -199,7 +185,6 @@ section{ padding:64px 0; }
   transform:rotate(-6deg);
 }
 
-/* -------- radar graphic -------- */
 .radar-wrap{
   position:relative;
   width:min(100%, 380px);
@@ -259,14 +244,9 @@ section{ padding:64px 0; }
 .radar-label.w{ left:-14px; top:50%; transform:translate(-100%,-50%); }
 @media (max-width:520px){ .radar-label{ font-size:0.6rem; } }
 
-/* ============================================
-   6. ABOUT SECTION
-   ============================================ */
+
 .about p{ max-width:64ch; font-size:0.95rem; margin-bottom:16px; }
 
-/* ============================================
-   7. SKILL MATRIX (list with checkbox-style squares)
-   ============================================ */
 .skill-row{
   display:grid;
   grid-template-columns:40px 1fr 2fr auto;
@@ -287,9 +267,7 @@ section{ padding:64px 0; }
 .boxes span{ width:14px; height:14px; border:1px solid var(--black); display:block; }
 .boxes span.filled{ background:var(--black); }
 
-/* ============================================
-   8. CREDENTIALS (education)
-   ============================================ */
+
 .credential{
   border:3px double var(--black);
   padding:36px;
@@ -302,9 +280,7 @@ section{ padding:64px 0; }
 .course-list{ display:flex; flex-wrap:wrap; gap:8px; list-style:none; }
 .course-list li{ border:1px solid var(--black); padding:6px 12px; font-size:0.78rem; }
 
-/* ============================================
-   9. ACTIVITY LOG
-   ============================================ */
+
 .log-item{
   padding:20px 0;
   border-bottom:1px dashed var(--black);
@@ -312,9 +288,7 @@ section{ padding:64px 0; }
 .log-item .tag{ font-size:0.7rem; color:var(--gray-light); letter-spacing:0.08em; display:block; margin-bottom:6px; }
 .log-item p{ font-size:0.92rem; }
 
-/* ============================================
-   10. CASE FILES (projects)
-   ============================================ */
+
 .cases{ display:grid; gap:20px; }
 @media (min-width:820px){ .cases{ grid-template-columns:repeat(3,1fr); } }
 .case-card{ border:1px solid var(--black); padding:26px; }
@@ -323,9 +297,7 @@ section{ padding:64px 0; }
 .case-card p{ font-size:0.85rem; color:var(--gray); }
 .case-card .stack{ display:block; margin-top:12px; font-size:0.72rem; color:var(--gray-light); border-top:1px solid var(--line-light); padding-top:10px; }
 
-/* ============================================
-   11. CONTACT FORM ("Transmit")
-   ============================================ */
+
 .transmit{ display:grid; gap:40px; }
 @media (min-width:820px){ .transmit{ grid-template-columns:1fr 1fr; } }
 .transmit-info h2{ font-family:var(--font-heading); font-size:2.4rem; margin-bottom:16px; }
@@ -349,9 +321,7 @@ section{ padding:64px 0; }
 .field textarea{ min-height:90px; resize:vertical; }
 .form-status{ margin-top:12px; font-size:0.8rem; color:var(--gray); }
 
-/* ============================================
-   12. FOOTER
-   ============================================ */
+
 footer{ border-top:1px solid var(--black); padding:24px; font-size:0.72rem; color:var(--gray-light); }
 footer .foot-inner{ max-width:800px; margin:0 auto; display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; }
 
