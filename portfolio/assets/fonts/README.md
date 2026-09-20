@@ -1,1 +1,4 @@
-Add your local font files here if you switch away from the Google Fonts CDN (currently the site loads Bebas Neue and Courier Prime from fonts.googleapis.com).
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+
