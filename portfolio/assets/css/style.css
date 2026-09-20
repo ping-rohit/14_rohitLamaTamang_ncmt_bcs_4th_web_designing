@@ -527,10 +527,3 @@ footer .foot-inner {
   flex-wrap: wrap;
   gap: 8px;
 }
-
-@media (prefers-reduced-motion: reduce) {
-  .redact-bar {
-    animation: none;
-    transform: scaleX(0);
-  }
-}
