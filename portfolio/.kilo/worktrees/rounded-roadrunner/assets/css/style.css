@@ -1,0 +1,361 @@
+/* ============================================
+   1. VARIABLES — all colors/fonts defined once
+   ============================================ */
+:root{
+  --black:#000000;
+  --white:#ffffff;
+  --gray:#5a5a5a;
+  --gray-light:#8f8f8f;
+  --line-light:#c9c9c9;
+  --font-heading:'Bebas Neue', sans-serif;
+  --font-body:'Courier Prime', monospace;
+  --sidebar-width:64px;
+}
+
+/* ============================================
+   2. RESET — basic reset so browsers behave the same
+   ============================================ */
+*{ box-sizing:border-box; margin:0; padding:0; }
+
+body{
+  background:var(--white);
+  color:var(--black);
+  font-family:var(--font-body);
+  line-height:1.7;
+}
+
+a{ color:inherit; text-decoration:none; }
+
+/* ============================================
+   3. SIDEBAR NAVIGATION (desktop)
+   A fixed black strip on the left with vertical text links.
+   "writing-mode: vertical-rl" is what turns the text sideways.
+   ============================================ */
+.sidebar{
+  position:fixed;
+  top:0; left:0; bottom:0;
+  width:var(--sidebar-width);
+  background:var(--black);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:space-between;
+  padding:24px 0;
+}
+.sidebar .logo{
+  color:var(--white);
+  font-family:var(--font-heading);
+  font-size:1.3rem;
+  writing-mode:vertical-rl; /* rotates the text to run top-to-bottom */
+}
+.sidebar nav{ display:flex; flex-direction:column; }
+.sidebar nav a{
+  writing-mode:vertical-rl;
+  transform:rotate(180deg); /* flips it so it still reads correctly */
+  color:var(--white);
+  font-size:0.75rem;
+  letter-spacing:0.12em;
+  padding:14px 10px;
+  border-left:2px solid transparent;
+}
+.sidebar nav a:hover,
+.sidebar nav a.active{
+  border-left-color:var(--white);
+  background:rgba(255,255,255,0.08);
+}
+
+/* Hide the sidebar on small screens and use a top bar instead */
+.sidebar{ display:none; }
+.mobile-nav{
+  position:sticky;
+  top:0;
+  background:var(--black);
+  overflow-x:auto;
+  white-space:nowrap;
+  z-index:100;
+}
+.mobile-nav a{
+  display:inline-block;
+  color:var(--white);
+  font-size:0.75rem;
+  letter-spacing:0.1em;
+  padding:16px;
+}
+
+@media (min-width:820px){
+  .sidebar{ display:flex; }   /* show sidebar on larger screens */
+  .mobile-nav{ display:none; } /* hide top bar on larger screens */
+}
+
+/* ============================================
+   4. PAGE LAYOUT
+   ============================================ */
+main{
+  padding:0 24px;
+}
+@media (min-width:820px){
+  main{ margin-left:var(--sidebar-width); padding:0 48px; }
+}
+.container{
+  max-width:800px;
+  margin:0 auto;
+}
+
+section{ padding:64px 0; }
+
+/* A simple dashed line used between sections, like a tear-off perforation */
+.divider{
+  border:none;
+  border-top:2px dashed var(--black);
+  margin:0;
+}
+
+/* Header row used at the top of every section: title + small label */
+.section-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-bottom:32px;
+}
+.section-head h2{
+  font-family:var(--font-heading);
+  font-size:2.2rem;
+  letter-spacing:0.02em;
+}
+.section-head .label{
+  font-size:0.7rem;
+  letter-spacing:0.1em;
+  color:var(--gray-light);
+}
+
+/* ============================================
+   5. HERO SECTION
+   ============================================ */
+.hero{
+  padding-top:100px;
+  display:flex;
+  flex-direction:column;
+  gap:48px;
+}
+@media (min-width:900px){
+  .hero{ flex-direction:row; align-items:center; padding-top:120px; }
+  .hero-text{ flex:1.1; }
+  .hero-radar{ flex:0.9; }
+}
+
+.hero .kicker{
+  font-size:0.75rem;
+  letter-spacing:0.12em;
+  color:var(--gray);
+  margin-bottom:14px;
+}
+
+/* The "redacted name" effect:
+   a black bar sits on top of the name, then shrinks away on page load. */
+.redact-box{
+  position:relative;
+  display:inline-block;
+  overflow:hidden;
+}
+.hero h1{
+  font-family:var(--font-heading);
+  font-size:clamp(3.5rem, 12vw, 6.5rem);
+  line-height:0.9;
+}
+.redact-bar{
+  position:absolute;
+  inset:0;
+  background:var(--black);
+  transform-origin:right;
+  animation:reveal 0.8s 0.4s ease forwards; /* runs once, 0.4s after load */
+}
+@keyframes reveal{
+  to{ transform:scaleX(0); }
+}
+
+.hero .role{ margin-top:20px; font-size:1.05rem; max-width:40ch; }
+.hero .lede{ margin-top:16px; color:#1a1a1a; font-size:0.95rem; max-width:50ch; }
+
+.btn-row{ display:flex; gap:14px; flex-wrap:wrap; margin-top:32px; }
+.btn{
+  font-family:var(--font-body);
+  font-size:0.85rem;
+  padding:13px 24px;
+  border:1px solid var(--black);
+}
+.btn.filled{ background:var(--black); color:var(--white); }
+.btn:hover{ background:var(--black); color:var(--white); }
+
+.stamp{
+  display:inline-block;
+  margin-top:28px;
+  font-family:var(--font-heading);
+  font-size:1.1rem;
+  letter-spacing:0.15em;
+  border:3px double var(--black);
+  padding:6px 16px;
+  transform:rotate(-6deg);
+}
+
+/* -------- radar graphic -------- */
+.radar-wrap{
+  position:relative;
+  width:min(100%, 380px);
+  aspect-ratio:1;
+  margin:0 auto;
+}
+.radar-ring{
+  position:absolute;
+  border:1px solid var(--black);
+  border-radius:50%;
+}
+.r1{ inset:0; }
+.r2{ inset:16%; opacity:0.7; }
+.r3{ inset:34%; opacity:0.45; }
+.radar-cross{
+  position:absolute;
+  inset:0;
+}
+.radar-cross::before, .radar-cross::after{
+  content:"";
+  position:absolute;
+  background:var(--line-light);
+}
+.radar-cross::before{ left:0; right:0; top:50%; height:1px; }
+.radar-cross::after{ top:0; bottom:0; left:50%; width:1px; }
+.radar-sweep{
+  position:absolute;
+  inset:0;
+  border-radius:50%;
+  background:conic-gradient(from 0deg, rgba(0,0,0,0.22), transparent 55deg);
+  animation:spin 7s linear infinite;
+  -webkit-mask-image:radial-gradient(circle, black 99%, transparent 100%);
+  mask-image:radial-gradient(circle, black 99%, transparent 100%);
+}
+@keyframes spin{ to{ transform:rotate(360deg); } }
+@media (prefers-reduced-motion: reduce){
+  .radar-sweep{ animation:none; opacity:0.15; }
+}
+.radar-center{
+  position:absolute;
+  top:50%; left:50%;
+  width:8px; height:8px;
+  background:var(--black);
+  border-radius:50%;
+  transform:translate(-50%,-50%);
+}
+.radar-label{
+  position:absolute;
+  font-size:0.68rem;
+  letter-spacing:0.08em;
+  color:var(--gray);
+  white-space:nowrap;
+}
+.radar-label.n{ top:-22px; left:50%; transform:translateX(-50%); }
+.radar-label.e{ right:-14px; top:50%; transform:translate(100%,-50%); }
+.radar-label.s{ bottom:-22px; left:50%; transform:translateX(-50%); }
+.radar-label.w{ left:-14px; top:50%; transform:translate(-100%,-50%); }
+@media (max-width:520px){ .radar-label{ font-size:0.6rem; } }
+
+/* ============================================
+   6. ABOUT SECTION
+   ============================================ */
+.about p{ max-width:64ch; font-size:0.95rem; margin-bottom:16px; }
+
+/* ============================================
+   7. SKILL MATRIX (list with checkbox-style squares)
+   ============================================ */
+.skill-row{
+  display:grid;
+  grid-template-columns:40px 1fr 2fr auto;
+  gap:16px;
+  align-items:center;
+  padding:16px 0;
+  border-bottom:1px solid var(--black);
+}
+.skill-row:first-child{ border-top:1px solid var(--black); }
+@media (max-width:700px){
+  .skill-row{ grid-template-columns:32px 1fr; row-gap:6px; }
+  .skill-row .desc, .skill-row .boxes{ grid-column:2; }
+}
+.skill-row .index{ font-family:var(--font-heading); font-size:1.2rem; color:var(--gray-light); }
+.skill-row .name{ font-weight:700; font-size:0.9rem; }
+.skill-row .desc{ font-size:0.85rem; color:var(--gray); }
+.boxes{ display:flex; gap:5px; }
+.boxes span{ width:14px; height:14px; border:1px solid var(--black); display:block; }
+.boxes span.filled{ background:var(--black); }
+
+/* ============================================
+   8. CREDENTIALS (education)
+   ============================================ */
+.credential{
+  border:3px double var(--black);
+  padding:36px;
+}
+.credential .degree{ font-family:var(--font-heading); font-size:1.6rem; margin-bottom:6px; }
+.credential .school{ color:var(--gray); font-size:0.85rem; margin-bottom:24px; }
+.cred-meta{ display:flex; gap:32px; flex-wrap:wrap; margin-bottom:24px; }
+.cred-meta div span{ display:block; font-size:0.68rem; color:var(--gray-light); letter-spacing:0.08em; }
+.cred-meta div b{ font-size:0.88rem; }
+.course-list{ display:flex; flex-wrap:wrap; gap:8px; list-style:none; }
+.course-list li{ border:1px solid var(--black); padding:6px 12px; font-size:0.78rem; }
+
+/* ============================================
+   9. ACTIVITY LOG
+   ============================================ */
+.log-item{
+  padding:20px 0;
+  border-bottom:1px dashed var(--black);
+}
+.log-item .tag{ font-size:0.7rem; color:var(--gray-light); letter-spacing:0.08em; display:block; margin-bottom:6px; }
+.log-item p{ font-size:0.92rem; }
+
+/* ============================================
+   10. CASE FILES (projects)
+   ============================================ */
+.cases{ display:grid; gap:20px; }
+@media (min-width:820px){ .cases{ grid-template-columns:repeat(3,1fr); } }
+.case-card{ border:1px solid var(--black); padding:26px; }
+.case-card .num{ font-size:0.68rem; color:var(--gray-light); letter-spacing:0.1em; display:block; margin-bottom:12px; }
+.case-card h3{ font-family:var(--font-heading); font-size:1.25rem; margin-bottom:10px; }
+.case-card p{ font-size:0.85rem; color:var(--gray); }
+.case-card .stack{ display:block; margin-top:12px; font-size:0.72rem; color:var(--gray-light); border-top:1px solid var(--line-light); padding-top:10px; }
+
+/* ============================================
+   11. CONTACT FORM ("Transmit")
+   ============================================ */
+.transmit{ display:grid; gap:40px; }
+@media (min-width:820px){ .transmit{ grid-template-columns:1fr 1fr; } }
+.transmit-info h2{ font-family:var(--font-heading); font-size:2.4rem; margin-bottom:16px; }
+.transmit-info p{ font-size:0.9rem; color:var(--gray); margin-bottom:24px; }
+.direct-links{ display:flex; flex-direction:column; gap:10px; }
+.direct-links a{ border-bottom:1px solid var(--line-light); width:fit-content; }
+.direct-links a:hover{ border-color:var(--black); }
+
+.field{ margin-bottom:22px; }
+.field label{ display:block; font-size:0.68rem; letter-spacing:0.1em; color:var(--gray-light); margin-bottom:8px; }
+.field input, .field textarea{
+  width:100%;
+  border:none;
+  border-bottom:1px solid var(--black);
+  background:transparent;
+  font-family:var(--font-body);
+  font-size:0.95rem;
+  padding:8px 2px;
+}
+.field input:focus, .field textarea:focus{ outline:none; border-bottom-width:2px; }
+.field textarea{ min-height:90px; resize:vertical; }
+.form-status{ margin-top:12px; font-size:0.8rem; color:var(--gray); }
+
+/* ============================================
+   12. FOOTER
+   ============================================ */
+footer{ border-top:1px solid var(--black); padding:24px; font-size:0.72rem; color:var(--gray-light); }
+footer .foot-inner{ max-width:800px; margin:0 auto; display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; }
+
+/* Respect users who prefer less motion */
+@media (prefers-reduced-motion: reduce){
+  .redact-bar{ animation:none; transform:scaleX(0); }
+}

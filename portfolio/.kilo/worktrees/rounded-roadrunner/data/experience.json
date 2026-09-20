@@ -1,0 +1,36 @@
+{
+  "education": [
+    {
+      "degree": "Bachelor of Computer Science (Hons)",
+      "school": "[Your University Name]",
+      "focus": "Network Technology and Cybersecurity",
+      "status": "In progress",
+      "duration": "[Start year] - [End year]",
+      "coursework": [
+        "Network Security",
+        "Ethical Hacking",
+        "Cryptography",
+        "Operating Systems",
+        "Digital Forensics",
+        "Cloud Fundamentals"
+      ]
+    }
+  ],
+  "activity_log": [
+    {
+      "id": "log-01",
+      "tag": "PRACTICE",
+      "description": "Working through TryHackMe and Hack The Box rooms to build practical, hands-on skills."
+    },
+    {
+      "id": "log-02",
+      "tag": "LAB",
+      "description": "Setting up a home lab to practice network defence, segmentation, and monitoring."
+    },
+    {
+      "id": "log-03",
+      "tag": "CERT",
+      "description": "Preparing for an entry-level industry certification to validate core security knowledge."
+    }
+  ]
+}
